@@ -6,7 +6,6 @@ const pedirUsuarios = async () => {
         if (!resp.ok) throw 'Error al realizar la peticion';
 
         const { results } = await resp.json();
-
         return results;
         
     } catch (error) {
