@@ -20,6 +20,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
+	box-sizing: border-box;
 	/* font: inherit;  esto no lo uso. */
 	vertical-align: baseline;
 }

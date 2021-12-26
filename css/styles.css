@@ -178,8 +178,58 @@ main {
 /* ----- end of card ----- */
 
 .pagination__container {
-    padding: 2rem 0;
+    margin: 2rem 0;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--strong-darker-base-color);
+    border-radius: 0.2rem;
+    overflow: hidden;
 }
+
+.pagination__btncontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination__btn,
+.pagination__btnprev,
+.pagination__btnnext {
+    background-color: var(--white-color);
+    outline: none;
+    border: none;
+    border-left: 1px solid var(--strong-darker-base-color);
+    padding: 0.45rem 0.65rem;
+    cursor: pointer;
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--blue-color);
+}
+.pagination__btn:hover,
+.pagination__btnprev:hover,
+.pagination__btnnext:hover {
+    background-color: var(--lighter-blue-color);
+}
+
+.pagination__btn {
+}
+
+.pagination__btnprev {
+    color: var(--black-color);
+    border:none;
+}
+
+.current__page,
+.current__page:hover {
+    background-color: var(--blue-color);
+    color: var(--white-color);
+    /* z-index: 2; */
+    /* transform: scale(1.05); */
+}
+
 /* ----- end of Estructura ----- */
 
 /* ----- estilos generales ----- */
@@ -196,7 +246,7 @@ main {
     cursor: text;
 }
 
-#sort__input{
+#sort__input {
     cursor: pointer;
 }
 /* ---- end of estilos generales ----- */
