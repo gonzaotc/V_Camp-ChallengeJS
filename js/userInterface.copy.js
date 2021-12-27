@@ -1,3 +1,20 @@
+
+
+
+
+// **********************************************************************
+// **********************************************************************
+
+// Nota: esta copia fue para intentar hacer el contenedor de los botones más dinamico,
+// De forma que se muestren justo la cantidad necesaria, por ej [2][3][4][...][10]
+// y que vayan cambiando en función de la página, pero no alcancé por tiempo.
+// Lo terminé convirtiendo en un grid que soporte +10 botones
+// Manteniendo la responsividad del sitio. (apto para screen +330px )
+
+// **********************************************************************
+// **********************************************************************
+
+
 const users__container = document.querySelector(".users__container");
 
 const pagination__btncontainer = document.querySelector(".pagination__btncontainer");

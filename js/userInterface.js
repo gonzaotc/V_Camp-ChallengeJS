@@ -1,10 +1,14 @@
 const users__container = document.querySelector(".users__container");
-
 const pagination__btncontainer = document.querySelector(".pagination__btncontainer");
+
+const showing__max = document.querySelector(".showing__max"); // 28 Candidates
+const showing__number = document.querySelector(".showing__number"); // 1 - 10
+
+const zeroMessage = document.querySelector("#zeroMessage");
 
 const PAGE_SIZE = 10;
 
-let paginaActual = {
+const paginaActual = {
     numero: 1,
     get obtener() {
         return this.numero;
@@ -14,8 +18,7 @@ let paginaActual = {
     },
 };
 
-const showing__max = document.querySelector(".showing__max"); // 28 Candidates
-const showing__number = document.querySelector(".showing__number"); // 1 - 10
+
 
 const dibujarUsuario = usuario => {
     const html = `
@@ -98,7 +101,6 @@ const dibujarPagina = (usuariosTotal, page_number) => {
     vaciarContenedor(users__container);
     let usuariosPagina = paginateArray(usuariosTotal, page_number);
     usuariosPagina.forEach(usuario => dibujarUsuario(usuario));
-    console.log(usuariosPagina);
     contabilizarUsuarios(usuariosTotal, usuariosPagina, page_number);
 };
 
@@ -124,14 +126,15 @@ const añadirBotonesPaginas = usuarios => {
         });
     }
 
-    //Escondo algunos botones si son demasiados.
-
-    pagination__btncontainer.children[0].classList.add("current__page");
+    //Agrego el current page a la primera, si existe el boton. (busqueda no nula.)
+    if (pagination__btncontainer.children.length > 0) {
+        pagination__btncontainer.children[0].classList.add("current__page");
+    }
 };
 
 const filtrarBusqueda = (usuarios, valor) => {
     valor = valor.toLowerCase();
-    return usuarios.filter(
+    const filtered = usuarios.filter(
         user =>
             user.name.first.toLowerCase().includes(valor) ||
             user.name.last.toLowerCase().includes(valor) ||
@@ -139,6 +142,16 @@ const filtrarBusqueda = (usuarios, valor) => {
             user.location.country.toLowerCase().includes(valor) ||
             user.location.postcode.toString().toLowerCase().includes(valor)
     );
+    if (filtered.length === 0) {
+        pagination__btncontainer.parentElement.classList.add("hide");
+        zeroMessage.classList.remove("hide");
+        zeroMessage.innerHTML = `Zero matching candidates with "<span class="showing__max">${valor}</span>"`;
+    } else {
+        pagination__btncontainer.parentElement.classList.remove("hide");
+        zeroMessage.classList.add("hide");
+    }
+
+    return filtered;
 };
 
 // El ordenamiento muta al arreglo original, y ese debe ser usado para filtrar.

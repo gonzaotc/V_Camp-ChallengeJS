@@ -19,6 +19,7 @@
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet">
 
+        <!-- styles -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -28,6 +29,7 @@
         <div class="search__container">
             <!-- columna 1 -->
             <input id="search__input" class="input" type="text" placeholder="Search Keywords">
+            <button id="search__reset" class="hide">X</button>
         </div>
 
         <main>
@@ -48,70 +50,18 @@
             </div>
 
             <div class="users__container">
-
-                <!-- card de prueba -->
-                <!-- <div class="card">
-
-                    <div class="card__image">
-                        <img src="./images/valtech.jpg" alt="">
-                    </div>
-
-                    <div class="card__info">
-                        <h2 class="card__title">
-                            Rafael Briggs
-                        </h2>
-                        <div class="card__role">
-                            <span id="work__icon" class="material-icons">
-                                work
-                            </span>
-                            <p class="card__role__text">
-                                Recruitment Consultancy
-                            </p>
-                        </div>
-                        <div class="card__location">
-                            <span class="material-icons">
-                                place
-                            </span>
-                            <p class="card__location__text">
-                                Haines City, FL 33844
-                            </p>
-                        </div>
-
-                        <div class="card__footer">
-                            <span class="card__date">
-                                <span class="material-icons-outlined card__date__icon">
-                                    watch_later
-                                </span>
-                                <p class="card__date__text">1M ago</p>
-                            </span>
-                            <button id="btn__like">
-                                <span class="material-icons-outlined">
-                                    favorite_border
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-
-                </div> -->
-                <!-- Termina card de prueba -->
-
             </div>
 
             <div class="pagination__container">
                 <!-- [prev][1][2][3][...][][25][next] -->
                 <button class="pagination__btnprev">Prev</button>
                 <div class="pagination__btncontainer">
-                    <!-- <button class="pagination__btn current__page">1</button>
-                        <button class="pagination__btn">2</button>
-                        <button class="pagination__btn">3</button>
-                        <button class="pagination__btn" disabled="true">...</button>
-                        <button class="pagination__btn">10</button> -->
                 </div>
                 <button class="pagination__btnnext">Next</button>
             </div>
+            <p id="zeroMessage" class="hide">Zero matching candidates.</p>
         </main>
     </div>
-
 
     <script src="./js/main.js" type="module"></script>
 </body>

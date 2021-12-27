@@ -1,5 +1,11 @@
 import { pedirUsuarios } from "./http-provider.js";
-import { añadirBotonesPaginas, dibujarPagina, filtrarBusqueda, ordenarAlpha, paginaActual } from "./userInterface.js";
+import {
+    añadirBotonesPaginas,
+    dibujarPagina,
+    filtrarBusqueda,
+    ordenarAlpha,
+    paginaActual,
+} from "./userInterface.js";
 let usuarios;
 let usuariosFilter;
 
@@ -27,21 +33,26 @@ const eventos = () => {
         usuariosFilter = filtrarBusqueda(usuarios, e.target.value);
         dibujarPagina(usuariosFilter, 1);
         añadirBotonesPaginas(usuariosFilter);
+
+        // Añado botón para reiniciar input.
+        if (e.target.value.length > 0) {
+            search__reset.classList.remove("hide");
+        } else {
+            search__reset.classList.add("hide");
+        }
     });
 
     // Ordenar usuarios (Alfabeticamente por nombre ASC y DESC)
     const sort__input = document.querySelector("#sort__input");
     sort__input.addEventListener("change", e => {
-        // TO DO: no tengo que hardcodear que muestre la pagina 1, debe mostrar la pagina mostrada antes de ordenar.
-        // Entonces, debe saber en que pagina estamos, antes de ordenar. 
         let pagina = paginaActual.obtener;
-        
+
         // En caso de que el arreglo haya sido filtrado, ordena y muestra el filtrado.
         if (Array.isArray(usuariosFilter)) {
             ordenarAlpha(usuariosFilter, e.target.value);
             dibujarPagina(usuariosFilter, pagina);
         }
-        // Si no fue filtrado, ordena y muestra el original. 
+        // Si no fue filtrado, ordena y muestra el original.
         else {
             ordenarAlpha(usuarios, e.target.value);
             dibujarPagina(usuarios, pagina);
@@ -71,6 +82,13 @@ const eventos = () => {
         } else {
             currentButton.nextElementSibling.click();
         }
+    });
+
+    //search reset
+    const search__reset = document.querySelector("#search__reset");
+    search__reset.addEventListener("click", () => {
+        search__input.value = "";
+        search__input.dispatchEvent(new Event("input"));
     });
 };
 
