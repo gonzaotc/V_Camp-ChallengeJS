@@ -125,6 +125,17 @@ const añadirBotonesPaginas = usuarios => {
     }
 
     //Escondo algunos botones si son demasiados.
+    // Si son más de 4, entonces
+    if (pagination__btncontainer.children.length > 3) {
+        //Escondo desde el cuarto hasta el ante ultimo.
+        for (let i = 4; i < pagination__btncontainer.children.length; i++) {
+            pagination__btncontainer.children[i - 1].classList.add("hide");
+        }
+        const botonExtra = document.createElement("button");
+        botonExtra.classList.add("pagination__btn");
+        botonExtra.innerText = "...";
+        pagination__btncontainer.insertBefore(botonExtra, pagination__btncontainer.children[3]);
+    }
 
     pagination__btncontainer.children[0].classList.add("current__page");
 };
